@@ -1,0 +1,19 @@
+{
+  "name": "mvc-project",
+  "version": "1.0.0",
+  "description": "Rich Media II project using the model-view-controller design pattern",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/venku122/MVCProject.git"
+  },
+  "author": "T.J. Tarazevits",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/venku122/MVCProject/issues"
+  },
+  "homepage": "https://github.com/venku122/MVCProject#readme"
+}
