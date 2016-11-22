@@ -2,7 +2,7 @@ const models = require('../models');
 
 const Account = models.Account;
 
-const loginpage = (req, res) => {
+const loginPage = (req, res) => {
   res.render('login', { csrfToken: req.csrfToken() });
 };
 
@@ -15,7 +15,7 @@ const logout = (req, res) => {
   res.redirect('/');
 };
 
-const login(request, response) => {
+const login = (request, response) => {
   const req = request;
   const res = response;
 
@@ -26,13 +26,13 @@ const login(request, response) => {
     return res.status(400).json({ error: 'Error: All Fields required' });
   }
 
-  return Acccount.AccountModel.authenticate(username, password, (err, account) => {
+  return Account.AccountModel.authenticate(username, password, (err, account) => {
     if (err || !account) {
       return res.status(401).json({ error: 'Wrong username or password' });
     }
     req.session.account = Account.AccountModel.toAPI(account);
 
-    return res.json({ redirect: './maker' });
+    return res.json({ redirect: './eventMaker' });
   });
 };
 
@@ -40,7 +40,7 @@ const signup = (request, response) => {
   const req = request;
   const res = response;
 
-  if (!req.body.username || !req.body.pass || !rew.body.pass2) {
+  if (!req.body.username || !req.body.pass || !req.body.pass2) {
     return res.status(400).json({ error: 'All fields are required' });
   }
 
@@ -60,12 +60,12 @@ const signup = (request, response) => {
     newAccount.save((err) => {
       if (err) {
         console.log(err);
-        return res.status(400).json({ error: 'An error occurred' });
+        return res.status(400).json({ error: 'An error occurred during account saving' });
       }
 
       req.session.account = Account.AccountModel.toAPI(newAccount);
 
-      return res.json({ redirect: '/maker' });
+      return res.json({ redirect: '/eventMaker' });
     });
   });
 };

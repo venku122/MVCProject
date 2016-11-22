@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Event Maker</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <link rel="shortcut icon" href="/assets/img/favicon.ico"/>
+  <link rel="stylesheet" type="text/css" href="/assets/style.css"/>
+</head>
+<body>
+  <nav><a href="/login"><img id="logo" src="/assets/img/balloon.png" alt="balloon logo"/></a>
+    <div class="navlink"><a href="/logout">Log out</a></div>
+    <div class="navlink"><a href="/eventMaker">Event Maker</a></div>
+    <div class="navlink"><a href="/bbq">Event Viewer</a></div>
+  </nav>
+  <section id = 'categorySelection'>
+    <div class="navlink"><a href="/bbq">Barbeques</a></div>
+    <div class="navlink"><a href="/birthday">Birthdays</a></div>
+    <div class="navlink"><a href="/wedding">Weddings</a></div>
+    <div class="navlink"><a href="/other">Other Events</a></div>
+  </section>
+  <section id="events">
+    <div class="event">
+      {{#if events}}
+        {{#each events}}
+          <div class = "event"><img src = "/assets/img/balloon.png" alt = "party balloon" class = "partyBalloon"/>
+            <h3 class = "eventName">Name: {{this.name}}</h3>
+            <h3 class = "eventDate">Date: {{this.date}}</h3>
+            <p class = "eventDescription"> {{this.description}}</p>
+            <h3 class = "eventCategory">Category {{this.category}}</h3>
+          </div>
+        {{/each}}
+      {{else}}
+          <h3 class = "emptyEvents">No Events in that category yet</h3>
+      {{/if}}
+    </div>
+  </section>
+<!--  <div id="domoMessage"><img id="speech" src="/assets/img/speech.png" alt="speech box"/>
+    <h3><span id="errorMessage"></span></h3><img id="domo" src="assets/img/domo.png" alt="domo"/>
+  </div>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+  <script src="/assets/eventViewer.js" type="text/babel"></script>
+</body>
+</html>

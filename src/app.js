@@ -11,7 +11,7 @@ const RedisStore = require('connect-redis')(session);
 const url = require('url');
 const csrf = require('csurf');
 
-const dbURL = process.env.MONGODB_URI || 'mongodb://localhost/DomoMaker';
+const dbURL = process.env.MONGODB_URI || 'mongodb://localhost/EventMaker';
 
 mongoose.connect(dbURL, (err) => {
   if (err) {
@@ -20,6 +20,11 @@ mongoose.connect(dbURL, (err) => {
   }
 });
 
+
+let redisURL = {
+  hostname: 'localhost',
+  port: 6379,
+};
 
 let redisPASS;
 
@@ -45,7 +50,7 @@ app.use(session({
     port: redisURL.port,
     pass: redisPASS,
   }),
-  secret: 'Domo Arigato',
+  secret: 'Event of Awesome',
   resave: true,
   saveUninitialized: true,
   cookie: {
@@ -55,7 +60,7 @@ app.use(session({
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/../views`);
-app.use(favicon(`${__dirname}/../client/img/favicon.png`));
+app.use(favicon(`${__dirname}/../client/img/favicon.ico`));
 app.disable('x-powered-by');
 app.use(cookieParser());
 app.use(csrf());

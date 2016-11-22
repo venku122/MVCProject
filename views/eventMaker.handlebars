@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Event Maker</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <link rel="shortcut icon" href="/assets/img/favicon.ico"/>
+  <link rel="stylesheet" type="text/css" href="/assets/style.css"/>
+</head>
+<body>
+  <nav><a href="/login"><img id="logo" src="/assets/img/balloon.png" alt="balloon logo"/></a>
+    <div class="navlink"><a href="/logout">Log out</a></div>
+    <div class="navlink"><a href="/eventMaker">Event Maker</a></div>
+    <div class="navlink"><a href="/bbq">Event Viewer</a></div>
+  </nav>
+  <section id="makeEvent">
+    <form id="eventForm" name="eventForm" action="/makeEvent" method="POST" class="eventForm">
+      <label for="name">Name: </label>
+      <input id="eventName" type="text" name="name" placeholder="Event Name"/>
+      <label for="date">Date of Event: </label>
+      <input id="eventDate" type="datetime-local" name="date"/>
+      <label for="category">Event Type: </label>
+      <select name="category" id="eventCategory" form="eventForm">
+        <option value="birthday">Birthday</option>
+        <option value="barbecue">Barbecue</option>
+        <option value="wedding">Wedding</option>
+        <option value="other">Other</option>
+      </select>
+      <label for="description">Event Description: </label>
+      <input id="eventDescription" type="text" name="description" placeholder="Event Description"/>
+      <input type = "hidden" name = "_csrf" value = {{csrfToken}} />
+      <a id="makeEventSubmit" href="#" class="makeEventSubmit">Create a new event</a>
+    </form>
+  </section>
+  <!--<section id="domos">
+    <div class="domo">
+      {{#if domos}}
+        {{#each domos}}
+          <div class = "domo"><img src = "/assets/img/domoface.jpeg" alt = "domo face" class = "domoFace"/>
+            <h3 class = "domoName">Name: {{this.name}}</h3>
+            <h3 class = "domoAge">Age: {{this.age}}</h3>
+          </div>
+        {{/each}}
+      {{else}}
+          <h3 class = "emptyDomo">No Domos yet</h3>
+      {{/if}}
+    </div>
+  </section>-->
+  <!--<div id="domoMessage"><img id="speech" src="/assets/img/speech.png" alt="speech box"/>
+    <h3><span id="errorMessage"></span></h3><img id="domo" src="assets/img/domo.png" alt="domo"/>
+  </div>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+  <script src="/assets/eventMaker.js" type="text/babel"></script>
+</body>
+</html>
